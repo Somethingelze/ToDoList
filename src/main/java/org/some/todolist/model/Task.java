@@ -2,7 +2,6 @@ package org.some.todolist.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 
 import java.time.LocalDate;
 
@@ -11,7 +10,6 @@ import java.time.LocalDate;
 @Table(name = "tasks")
 public class Task {
 
-    @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,5 +23,4 @@ public class Task {
     private String status;
 
     private LocalDate dueDate;
-
 }
