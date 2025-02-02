@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org " lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Детали задачи</title>
+</head>
+<body>
+<h1>Детали задачи</h1>
+<p><strong>ID:</strong> <span th:text="${task.id}"></span></p>
+<p><strong>Название:</strong> <span th:text="${task.name}"></span></p>
+<p><strong>Описание:</strong> <span th:text="${task.description}"></span></p>
+<p><strong>Статус:</strong> <span th:text="${task.status}"></span></p>
+<p><strong>Дата завершения:</strong> <span th:text="${task.dueDate}"></span></p>
+
+<a th:href="@{/tasks/{id}/edit(id=${task.id})}">Редактировать</a>
+<a href="/tasks">Назад</a>
+</body>
+</html>

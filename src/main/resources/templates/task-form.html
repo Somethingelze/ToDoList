@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${task.id == null ? 'Создание задачи' : 'Редактирование задачи'}"></title>
+</head>
+<body>
+<h1 th:text="${task.id == null ? 'Создать задачу' : 'Редактировать задачу'}"></h1>
+
+<form th:action="@{${task.id == null} ? '/tasks' : '/tasks/' + ${task.id}}" method="post">
+    <input type="hidden" th:if="${task.id != null}" name="_method" value="put"/>
+
+    <label for="name">Название:</label>
+    <input type="text" id="name" name="name" th:value="${task.name}" required><br>
+
+    <label for="description">Описание:</label>
+    <textarea id="description" name="description" th:text="${task.description}"></textarea><br>
+
+    <label for="status">Статус:</label>
+    <select id="status" name="status">
+        <option th:each="status : ${T(org.some.todolist.model.TaskStatus).values()}"
+                th:value="${status}" th:text="${status}"
+                th:selected="${status == task.status}"></option>
+    </select>
+
+
+    <label for="dueDate">Дата завершения:</label>
+    <input type="date" id="dueDate" name="dueDate" th:value="${task.dueDate}"><br>
+
+    <button type="submit">Сохранить</button>
+</form>
+
+<a href="/tasks">Назад</a>
+</body>
+</html>
